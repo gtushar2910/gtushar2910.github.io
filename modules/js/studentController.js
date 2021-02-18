@@ -1,7 +1,7 @@
 mainApp.controller("studentController", function($scope) {
     $scope.student = {
-        firstName: "Mahesh",
-        lastName: "Parashar",
+        firstName: "Tushar",
+        lastName: "Gohil",
         fees: 500,
         subjects: [
             { name: 'Physics', marks: 70 },

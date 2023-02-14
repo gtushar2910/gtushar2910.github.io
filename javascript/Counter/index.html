@@ -8,21 +8,46 @@
 
     <link href="styles/style.css" rel="stylesheet">
     <script src="scripts/app.js" defer></script>
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- main css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <!-- font awesome -->
-    <script src="js/all.js"></script>
+    <script>
+        const buttons = document.querySelectorAll('.counterBtn')
+        let count = 0
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                if (button.classList.contains('prevBtn')) {
+                    count--
+                } else if (button.classList.contains('nextBtn')) {
+                    count++
+                }
+
+                //Select the counter text
+                const counter = document.querySelector('#counter')
+                counter.textContent = count
+
+                if (count < 0) {
+                    counter.style.color = 'red'
+                } else if (count > 0) {
+                    counter.style.color = 'green'
+                } else {
+                    counter.style.color = '#333333'
+                }
+            })
+        })
+    </script>
 </head>
 
 <body>
-    <h1>Counter Mini Project</h1>
 
+    <h1 align="center">Counter Mini Project</h1>
 
     <div class="container">
+
         <div class="row max-height align-items-center">
             <div class="col-10 mx-auto col-md-6 text-center main-container p-5">
                 <h1 class="text-uppercase">counter</h1>
@@ -34,11 +59,7 @@
             </div>
         </div>
     </div>
-    <!-- jquery -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- script js -->
+
 
 </body>
 

@@ -1,0 +1,27 @@
+<HTML>
+	<HEAD>
+		<TITLE>Using Functions</TITLE>
+		
+		<script language="JavaScript">
+			var strName = "Surat";
+			
+			function DisplayLocalName()
+			{
+				var strName = "SCET";	// using var in function
+				document.write(strName);
+			}
+			function DisplayGlobalName()
+			{
+				document.write(strName);
+			}
+		</script>
+	</HEAD>
+
+	<BODY>
+		<script language="JavaScript">
+			DisplayLocalName();
+			document.write("<BR>");
+			DisplayGlobalName();
+		</script>
+	</BODY>
+</HTML>

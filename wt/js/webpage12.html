@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+    <h2>Sarvajanik College of Engineering and Technology</h2>
+ 
+    <!-- Finding the HTML Elements by their Id in DOM -->
+    <p id="intro">A Computer Science portal for students.</p>
+    <p>This example illustrates the <b>getElementById</b> method.</p>
+    <p id="demo"></p>
+    <script>
+        const element = document.getElementById("intro");
+        document.getElementById("demo").innerHTML =
+          "A Good introduction is: " + element.innerHTML;
+    </script>
+</body>
+ 
+</html>

@@ -1,19 +1,11 @@
 <?php
-$con=mysqli_connect("localhost","root","","test1");
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+$connect = mysqli_connect("localhost","root","","people");
+$sql = "select * from contact";
+    $result = $connect->query($sql);
 
-$result = mysqli_query($con,"SELECT * FROM Persons");
-
-while($row = mysqli_fetch_array($result))
-  {
-  echo $row['FirstName'] . " " . $row['LastName']. " " . $row['Age'];
-  echo "<br>";
-  }
-
-mysqli_close($con);
+    while($row = mysqli_fetch_array($result))
+    {
+	echo($row["pid"]."-".$row["pname"]."-".$row["pemail"]);
+    echo("<br>");
+    }
 ?>
-

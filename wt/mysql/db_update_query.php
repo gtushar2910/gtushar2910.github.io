@@ -1,14 +1,12 @@
 <?php
-$con=mysqli_connect("localhost","root","","test1");
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+$connect = mysqli_connect("localhost","root","","people");
 
-$query = "UPDATE Persons SET Age=36 WHERE FirstName='Peter' AND LastName='Griffin'";
 
-mysqli_query($con, $query);
+$query = "UPDATE contact SET pname='abc' WHERE pid=2 ";
 
-mysqli_close($con);
+if ($connect->query($query) === TRUE) {
+    echo "Record Updated successfully";
+} else {
+    echo "\nError updating record: " . $conn->error;
+}
 ?>

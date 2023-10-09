@@ -1,19 +1,13 @@
 <?php
-$con=mysqli_connect("localhost","root","","test1");
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-$query1="INSERT INTO Persons (FirstName, LastName, Age)
-VALUES ('Peter', 'Griffin',35)";
-mysqli_query($con,$query1);
-
-
-$query2="INSERT INTO Persons (FirstName, LastName, Age) 
-VALUES ('Glenn', 'Quagmire',33)";
-mysqli_query($con,$query2);
-
-mysqli_close($con);
+$connect = mysqli_connect("localhost","root","","people");
+$id=3;
+$name='xyz2';
+$email='xyz2@abc.com';
+    // make up the query
+    $query = "insert into contact(pid, pname, pemail) values ($id, \"$name\", \"$email\")";
+    if ($connect->query($query) === TRUE) {
+        echo "Record Inserted successfully";
+    } else {
+        echo "\nError inserting record: " . $conn->error;
+    }
 ?>

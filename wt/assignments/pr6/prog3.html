@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dialog Boxes</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        button {
+            margin: 25px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practical Assignment Number 6 : Program number 3 : Dialog Boxes</h1>
+    
+    <button onclick="showAlert()">Alert Dialog Box</button>
+    <button onclick="showConfirm()">Confirm Dialog Box</button>
+    <button onclick="showPrompt()">Prompt Dialog Box</button>
+
+    <script>
+        // Function to show an alert box
+        function showAlert() {
+            alert('This is an alert box!');
+        }
+
+        // Function to show a confirm box and handle the user's response
+        function showConfirm() {
+            const result = confirm('Do you want to proceed?');
+            if (result) {
+                alert('You pressed OK!');
+            } else {
+                alert('You pressed Cancel!');
+            }
+        }
+
+        // Function to show a prompt box and handle the user's input
+        function showPrompt() {
+            const userInput = prompt('Please enter your name:');
+            if (userInput) {
+                alert('Hello, ' + userInput + '!');
+            } else {
+                alert('You did not enter a name.');
+            }
+        }
+    </script>
+</body>
+</html>

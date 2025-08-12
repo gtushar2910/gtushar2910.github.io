@@ -1,6 +1,6 @@
-<!-- Create a webpage with an input box, a button "Add Item", 
- and an empty list. When the button is clicked, 
- add the text from the input as a new list item. -->
+<!-- Create a webpage with a paragraph and three buttons: "Red", 
+ "Green", "Blue". When a button is clicked, change the background 
+ color of the webpage to that button’s color. -->
 
  <!-- Create a webpage with a heading and a button. When the button is 
  clicked, change the heading text to "Hello, JavaScript DOM!".
@@ -35,11 +35,12 @@
 <body>
 
    <section>
-        <input type="text" id="itemInput" placeholder="Enter list item">
-        <button id="addItemBtn">Add Item</button>
-        <ul id="itemList"></ul>
+        <p>Click a button to change background color:</p>
+        <button class="colorBtn" data-color="red">Red</button>
+        <button class="colorBtn" data-color="green">Green</button>
+        <button class="colorBtn" data-color="blue">Blue</button>
     </section>
-    <!-- <script src="dom3.js" defer></script> -->
+    <script src="dom2.js" defer></script>
 </body>
 
-</html>
+</html> 

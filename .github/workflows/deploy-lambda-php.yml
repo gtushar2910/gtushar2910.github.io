@@ -3,7 +3,7 @@ name: Deploy PHP scripts to AWS Lambda
 on:
   push:
     branches:
-      - main       # or the branch you deploy from
+      - main   # or the branch you deploy from
 
 jobs:
   deploy:
@@ -14,13 +14,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Package your PHP files
+      # 2️⃣ Install Composer on the runner
+      - name: Install Composer
+        run: |
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+      # 3️⃣ Install PHP dependencies (Bref etc.)
+      - name: Install dependencies
+        run: composer require bref/bref
+
+      # 4️⃣ Package your PHP files + vendor
       - name: Zip PHP scripts for Lambda
         run: |
           cd wt/php/syntax
-          zip -r ../../../function.zip .
+          zip -r ../../../function.zip . ../../../../vendor
 
-      # 3️⃣ Configure AWS credentials
+      # 5️⃣ Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -28,7 +38,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # 4️⃣ Deploy to Lambda
+      # 6️⃣ Deploy to Lambda
       - name: Update Lambda function code
         run: |
           aws lambda update-function-code \

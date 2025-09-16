@@ -1,0 +1,36 @@
+name: Deploy PHP scripts to AWS Lambda
+
+on:
+  push:
+    branches:
+      - main       # or the branch you deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Package your PHP files
+      - name: Zip PHP scripts for Lambda
+        run: |
+          cd wt/php/syntax
+          zip -r ../../../function.zip .
+
+      # 3️⃣ Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # 4️⃣ Deploy to Lambda
+      - name: Update Lambda function code
+        run: |
+          aws lambda update-function-code \
+            --function-name my-php-fn \
+            --zip-file fileb://function.zip

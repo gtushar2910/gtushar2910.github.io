@@ -66,4 +66,4 @@ $mydata = array('name'=>"ABC", 'age'=>28, 'occupation'=>"writer");
 echo "<br>------------- Storing Key-Value Pairs in an Array -------<br> ";
 echo("my name is: " .$mydata['name']. " <br>my age is: " .$mydata['age']);
 
-?>
+?>  
